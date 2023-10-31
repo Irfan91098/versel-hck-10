@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Header
 
 app = FastAPI()
 
@@ -13,7 +13,7 @@ def helloFunction(): # function yang memproses alamat/url tertentu
 
 # secret -> harus memasukan authentication
 @app.get("/secret")
-def helloFunction(api_keys: str = header(none)):
+def helloFunction(api_keys: str = Header(none)):
     # check api_key dari header
     if api_keys is none or api_keys != key:
         raise HTTPException(status_code=401, detail="Invalid API key")
