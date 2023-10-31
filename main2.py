@@ -13,9 +13,9 @@ def helloFunction(): # function yang memproses alamat/url tertentu
 
 # secret -> harus memasukan authentication
 @app.get("/secret")
-def helloFunction(api_keys: str = Header(none)):
+def helloFunction(api_keys: str = Header(None)):
     # check api_key dari header
-    if api_keys is none or api_keys != key:
+    if api_keys is None or api_keys != key:
         raise HTTPException(status_code=401, detail="Invalid API key")
     
     return {
